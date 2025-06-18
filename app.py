@@ -14,8 +14,8 @@ import time
 time.sleep(60)  # App waits 60 seconds before updating automatically on refresh
 
 load_dotenv()  # Load variables from .env
+print(os.getenv("API_KEY"))
 
-print("API Key loaded is:", os.getenv("API_KEY"))
 
 # Constants
 API_KEY = os.getenv("API_KEY") 
