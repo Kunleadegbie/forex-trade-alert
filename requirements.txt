@@ -3,4 +3,3 @@ pandas
 requests
 ta
 python-dotenv
-smtplib
