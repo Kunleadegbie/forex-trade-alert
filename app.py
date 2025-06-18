@@ -16,13 +16,43 @@ time.sleep(60)
 API_KEY = st.secrets["api"]["api_key"]
 API_URL = f"https://api.exchangerate.host/latest?base=EUR&access_key={API_KEY}"
 CURRENCY_PAIR = "EUR/USD"
-EMAIL_SUBSCRIBER = st.secrets["email"]["email_subscriber"]
 
-# Email Config
+
+# Load secrets
 SMTP_SERVER = st.secrets["email"]["smtp_server"]
 SMTP_PORT = st.secrets["email"]["smtp_port"]
 EMAIL_USERNAME = st.secrets["email"]["email_username"]
 EMAIL_PASSWORD = st.secrets["email"]["email_password"]
+EMAIL_SUBSCRIBER = st.secrets["email"]["email_subscriber"]
+
+# Streamlit UI
+st.title("Forex Trade Alert")
+message = st.text_area("Enter your trade signal")
+
+if st.button("Send Trade Alert"):
+    if message.strip() == "":
+        st.error("Please enter a trade signal message.")
+    else:
+        try:
+            # Set up the email
+            email_msg = MIMEMultipart()
+            email_msg["From"] = EMAIL_USERNAME
+            email_msg["To"] = EMAIL_SUBSCRIBER
+            email_msg["Subject"] = "Forex Trade Alert 🚨"
+
+            # Attach the message body
+            email_msg.attach(MIMEText(message, "plain"))
+
+            # Send the email via Gmail SMTP server
+            with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
+                server.starttls()
+                server.login(EMAIL_USERNAME, EMAIL_PASSWORD)
+                server.send_message(email_msg)
+
+            st.success("✅ Trade Alert sent successfully!")
+
+        except Exception as e:
+            st.error(f"❌ Failed to send email: {e}")
 
 def fetch_forex_data():
     """Fetches live forex data from Exchange Rates API."""
