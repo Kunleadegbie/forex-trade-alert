@@ -8,11 +8,12 @@ from ta.trend import SMAIndicator, EMAIndicator
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import os
 import time
 time.sleep(60)  # App waits 60 seconds before updating automatically on refresh
 
 # Constants
-API_KEY = "f730e7a01222bccf69818f1c13901936"  # Replace with your actual Exchange Rates API key
+API_KEY = os.getenv("API_KEY") # Replace with your actual Exchange Rates API key
 API_URL = f"https://api.exchangerate.host/latest?base=EUR&access_key={API_KEY}"
 CURRENCY_PAIR = "EUR/USD"  # Focused currency pair (EUR to USD)
 EMAIL_SUBSCRIBER = "adekadegbie@gmail.com"
@@ -20,9 +21,8 @@ EMAIL_SUBSCRIBER = "adekadegbie@gmail.com"
 # Email Configuration
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
-EMAIL_USERNAME = "adekadegbie@gmail.com"  # Replace with your sending email
-EMAIL_PASSWORD = "lccs bpbn ioyw vifg"  # Replace with your app-specific email password
-
+EMAIL_USERNAME = os.getenv("EMAIL_USERNAME") # Replace with your sending email
+EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")  # Replace with your app-specific email password
 
 def fetch_forex_data():
     """Fetches live forex data from Exchange Rates API."""
