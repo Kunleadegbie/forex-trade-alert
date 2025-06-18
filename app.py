@@ -13,16 +13,16 @@ import time
 time.sleep(60)
 
 # Load from Streamlit Secrets
-API_KEY = st.secrets["api"]["api_key"]
+API_KEY = st.secrets["api"]["246b3f60bb878d9a34c80443fb30e963"]
 API_URL = f"https://api.exchangerate.host/latest?base=EUR&access_key={API_KEY}"
 CURRENCY_PAIR = "EUR/USD"
-EMAIL_SUBSCRIBER = st.secrets["email"]["email_subscriber"]
+EMAIL_SUBSCRIBER = st.secrets["email"]["kadegbie@gmail.com"]
 
 # Email Config
-SMTP_SERVER = st.secrets["email"]["smtp_server"]
-SMTP_PORT = st.secrets["email"]["smtp_port"]
-EMAIL_USERNAME = st.secrets["email"]["email_username"]
-EMAIL_PASSWORD = st.secrets["email"]["email_password"]
+SMTP_SERVER = st.secrets["email"]["smtp.gmail.com"]
+SMTP_PORT = st.secrets["email"][587]
+EMAIL_USERNAME = st.secrets["email"]["kadegbie@gmail.com"]
+EMAIL_PASSWORD = st.secrets["email"]["auma rvdb lxxj qukc"]
 
 def fetch_forex_data():
     """Fetches live forex data from Exchange Rates API."""
