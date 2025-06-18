@@ -38,7 +38,7 @@ def fetch_forex_data():
             st.error("Unable to fetch EUR/USD rates. Check the API response.")
             return None
 
-        df = pd.DataFrame({"close": [eur_usd] * 100})
+        df = pd.DataFrame({"close": [eur_usd] * 25})
         return df
 
     except Exception as e:
