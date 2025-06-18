@@ -19,7 +19,7 @@ print(os.getenv("API_KEY"))
 
 # Constants
 API_KEY = os.getenv("API_KEY") 
-API_URL = f"https://api.exchangerate.host/latest?base=EUR&access_key={API_KEY}"
+API_URL = "https://api.exchangerate.host/latest?base=EUR&symbols=USD"
 CURRENCY_PAIR = "EUR/USD"  # Focused currency pair (EUR to USD)
 EMAIL_SUBSCRIBER = os.getenv("EMAIL_SUBSCRIBER")
 
